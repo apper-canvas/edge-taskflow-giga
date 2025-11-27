@@ -152,7 +152,7 @@ if (!isAuthenticated) {
         </header>
 
         {/* Page Content */}
-        <main className="p-6">
+<main className="pt-2 px-6 pb-6">
           <Outlet />
         </main>
       </div>
