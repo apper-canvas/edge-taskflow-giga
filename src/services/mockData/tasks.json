@@ -1,0 +1,52 @@
+[
+  {
+    "Id": 1,
+    "title": "Review quarterly sales report",
+    "description": "Analyze Q3 performance metrics and prepare presentation for management meeting",
+    "priority": "high",
+    "dueDate": "2024-01-15",
+    "completed": false,
+    "createdAt": "2024-01-10T09:00:00Z",
+    "completedAt": null
+  },
+  {
+    "Id": 2,
+    "title": "Update project documentation",
+    "description": "Add new API endpoints and update authentication flow diagrams",
+    "priority": "medium",
+    "dueDate": "2024-01-18",
+    "completed": false,
+    "createdAt": "2024-01-10T14:30:00Z",
+    "completedAt": null
+  },
+  {
+    "Id": 3,
+    "title": "Schedule team retrospective",
+    "description": "Coordinate with all team members to find suitable time for sprint retrospective",
+    "priority": "low",
+    "dueDate": "2024-01-20",
+    "completed": true,
+    "createdAt": "2024-01-09T11:15:00Z",
+    "completedAt": "2024-01-11T16:45:00Z"
+  },
+  {
+    "Id": 4,
+    "title": "Implement user authentication",
+    "description": "Set up JWT authentication with refresh tokens and proper session management",
+    "priority": "high",
+    "dueDate": "2024-01-22",
+    "completed": false,
+    "createdAt": "2024-01-11T08:00:00Z",
+    "completedAt": null
+  },
+  {
+    "Id": 5,
+    "title": "Design new landing page",
+    "description": "Create wireframes and mockups for the updated product landing page",
+    "priority": "medium",
+    "dueDate": "2024-01-25",
+    "completed": false,
+    "createdAt": "2024-01-11T13:20:00Z",
+    "completedAt": null
+  }
+]
