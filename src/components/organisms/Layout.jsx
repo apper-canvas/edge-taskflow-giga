@@ -46,7 +46,7 @@ if (!isAuthenticated) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+<div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex">
       {/* Mobile sidebar backdrop */}
       {isSidebarOpen && (
         <div 
@@ -56,10 +56,10 @@ if (!isAuthenticated) {
       )}
 
       {/* Sidebar */}
-      <aside className={cn(
+<aside className={cn(
         "fixed top-0 left-0 h-full w-72 bg-white/90 backdrop-blur-xl border-r border-gray-200/50 z-50 transform transition-transform duration-300 ease-out",
         isSidebarOpen ? "translate-x-0" : "-translate-x-full",
-        "lg:translate-x-0 lg:static lg:z-auto"
+        "lg:translate-x-0 lg:relative lg:z-auto lg:flex-shrink-0"
       )}>
         <div className="flex flex-col h-full">
           {/* Logo */}
@@ -127,7 +127,7 @@ if (!isAuthenticated) {
       </aside>
 
       {/* Main Content */}
-      <div className="lg:ml-72">
+<div className="flex-1 flex flex-col min-w-0">
         {/* Mobile Header */}
         <header className="lg:hidden bg-white/80 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-30">
           <div className="flex items-center justify-between px-6 py-4">
@@ -152,7 +152,7 @@ if (!isAuthenticated) {
         </header>
 
         {/* Page Content */}
-<main className="pt-1 px-6 pb-6">
+        <main className="flex-1 pt-1 px-6 pb-6">
           <Outlet />
         </main>
       </div>
