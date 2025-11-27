@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 1,
+    "name": "Design Team",
+    "description": "UI/UX designers and visual artists",
+    "ownerId": 1,
+    "members": [1, 2],
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-10T12:00:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "Development Team",
+    "description": "Frontend and backend developers",
+    "ownerId": 2,
+    "members": [1, 2],
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-08T16:30:00Z"
+  }
+]

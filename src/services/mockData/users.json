@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 1,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "avatar": null,
+    "role": "admin",
+    "emailVerified": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "lastLogin": "2024-01-12T10:30:00Z",
+    "preferences": {
+      "theme": "light",
+      "notifications": {
+        "email": true,
+        "push": true,
+        "taskReminders": true,
+        "teamUpdates": true
+      },
+      "timezone": "UTC"
+    }
+  },
+  {
+    "Id": 2,
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "avatar": null,
+    "role": "user",
+    "emailVerified": true,
+    "createdAt": "2024-01-02T00:00:00Z",
+    "lastLogin": "2024-01-12T08:15:00Z",
+    "preferences": {
+      "theme": "dark",
+      "notifications": {
+        "email": true,
+        "push": false,
+        "taskReminders": true,
+        "teamUpdates": false
+      },
+      "timezone": "America/New_York"
+    }
+  }
+]

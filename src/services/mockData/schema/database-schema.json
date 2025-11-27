@@ -1,0 +1,202 @@
+{
+  "tables": {
+    "users": {
+      "fields": {
+        "Id": "integer primary key",
+        "name": "varchar(255) not null",
+        "email": "varchar(255) unique not null",
+        "password": "varchar(255) not null",
+        "avatar": "text nullable",
+        "role": "enum('admin', 'user') default 'user'",
+        "emailVerified": "boolean default false",
+        "createdAt": "timestamp default current_timestamp",
+        "updatedAt": "timestamp default current_timestamp",
+        "lastLogin": "timestamp nullable",
+        "preferences": "json nullable"
+      },
+      "indexes": ["email", "role"],
+      "relationships": {
+        "tasks": "one-to-many",
+        "projects": "one-to-many (owner)",
+        "teams": "many-to-many",
+        "comments": "one-to-many",
+        "notifications": "one-to-many"
+      }
+    },
+    "tasks": {
+      "fields": {
+        "Id": "integer primary key",
+        "title": "varchar(255) not null",
+        "description": "text nullable",
+        "priority": "enum('low', 'medium', 'high') default 'medium'",
+        "status": "enum('todo', 'in_progress', 'completed') default 'todo'",
+        "dueDate": "date nullable",
+        "completed": "boolean default false",
+        "completedAt": "timestamp nullable",
+        "createdAt": "timestamp default current_timestamp",
+        "updatedAt": "timestamp default current_timestamp",
+        "userId": "integer not null foreign key",
+        "projectId": "integer nullable foreign key",
+        "parentTaskId": "integer nullable foreign key (for subtasks)"
+      },
+      "indexes": ["userId", "projectId", "dueDate", "priority", "status"],
+      "relationships": {
+        "user": "many-to-one",
+        "project": "many-to-one",
+        "subtasks": "one-to-many (self-referential)",
+        "parent": "many-to-one (self-referential)",
+        "tags": "many-to-many",
+        "comments": "one-to-many",
+        "attachments": "one-to-many"
+      }
+    },
+    "projects": {
+      "fields": {
+        "Id": "integer primary key",
+        "name": "varchar(255) not null",
+        "description": "text nullable",
+        "status": "enum('planning', 'active', 'paused', 'completed', 'cancelled') default 'planning'",
+        "priority": "enum('low', 'medium', 'high') default 'medium'",
+        "startDate": "date nullable",
+        "dueDate": "date nullable",
+        "progress": "integer default 0",
+        "color": "varchar(7) default '#6366F1'",
+        "ownerId": "integer not null foreign key",
+        "teamId": "integer nullable foreign key",
+        "createdAt": "timestamp default current_timestamp",
+        "updatedAt": "timestamp default current_timestamp"
+      },
+      "indexes": ["ownerId", "teamId", "status", "dueDate"],
+      "relationships": {
+        "owner": "many-to-one (users)",
+        "team": "many-to-one",
+        "tasks": "one-to-many",
+        "attachments": "one-to-many",
+        "comments": "one-to-many"
+      }
+    },
+    "subtasks": {
+      "fields": {
+        "Id": "integer primary key",
+        "title": "varchar(255) not null",
+        "completed": "boolean default false",
+        "completedAt": "timestamp nullable",
+        "taskId": "integer not null foreign key",
+        "order": "integer default 0",
+        "createdAt": "timestamp default current_timestamp",
+        "updatedAt": "timestamp default current_timestamp"
+      },
+      "indexes": ["taskId", "order"],
+      "relationships": {
+        "task": "many-to-one"
+      }
+    },
+    "tags": {
+      "fields": {
+        "Id": "integer primary key",
+        "name": "varchar(100) unique not null",
+        "color": "varchar(7) default '#6B7280'",
+        "createdAt": "timestamp default current_timestamp"
+      },
+      "indexes": ["name"],
+      "relationships": {
+        "tasks": "many-to-many"
+      }
+    },
+    "task_tags": {
+      "fields": {
+        "taskId": "integer not null foreign key",
+        "tagId": "integer not null foreign key",
+        "createdAt": "timestamp default current_timestamp"
+      },
+      "primaryKey": ["taskId", "tagId"],
+      "relationships": {
+        "task": "many-to-one",
+        "tag": "many-to-one"
+      }
+    },
+    "comments": {
+      "fields": {
+        "Id": "integer primary key",
+        "content": "text not null",
+        "userId": "integer not null foreign key",
+        "taskId": "integer nullable foreign key",
+        "projectId": "integer nullable foreign key",
+        "createdAt": "timestamp default current_timestamp",
+        "updatedAt": "timestamp default current_timestamp"
+      },
+      "indexes": ["userId", "taskId", "projectId", "createdAt"],
+      "relationships": {
+        "user": "many-to-one",
+        "task": "many-to-one",
+        "project": "many-to-one"
+      }
+    },
+    "attachments": {
+      "fields": {
+        "Id": "integer primary key",
+        "fileName": "varchar(255) not null",
+        "originalName": "varchar(255) not null",
+        "fileSize": "integer not null",
+        "mimeType": "varchar(100) not null",
+        "filePath": "varchar(500) not null",
+        "userId": "integer not null foreign key",
+        "taskId": "integer nullable foreign key",
+        "projectId": "integer nullable foreign key",
+        "createdAt": "timestamp default current_timestamp"
+      },
+      "indexes": ["userId", "taskId", "projectId"],
+      "relationships": {
+        "user": "many-to-one",
+        "task": "many-to-one",
+        "project": "many-to-one"
+      }
+    },
+    "teams": {
+      "fields": {
+        "Id": "integer primary key",
+        "name": "varchar(255) not null",
+        "description": "text nullable",
+        "ownerId": "integer not null foreign key",
+        "createdAt": "timestamp default current_timestamp",
+        "updatedAt": "timestamp default current_timestamp"
+      },
+      "indexes": ["ownerId"],
+      "relationships": {
+        "owner": "many-to-one (users)",
+        "members": "many-to-many (users)",
+        "projects": "one-to-many"
+      }
+    },
+    "team_members": {
+      "fields": {
+        "teamId": "integer not null foreign key",
+        "userId": "integer not null foreign key",
+        "role": "enum('member', 'admin') default 'member'",
+        "joinedAt": "timestamp default current_timestamp"
+      },
+      "primaryKey": ["teamId", "userId"],
+      "relationships": {
+        "team": "many-to-one",
+        "user": "many-to-one"
+      }
+    },
+    "notifications": {
+      "fields": {
+        "Id": "integer primary key",
+        "type": "enum('task_assigned', 'task_due', 'task_completed', 'project_update', 'team_invite') not null",
+        "title": "varchar(255) not null",
+        "message": "text not null",
+        "userId": "integer not null foreign key",
+        "relatedId": "integer nullable",
+        "relatedType": "enum('task', 'project', 'team') nullable",
+        "read": "boolean default false",
+        "createdAt": "timestamp default current_timestamp"
+      },
+      "indexes": ["userId", "read", "createdAt"],
+      "relationships": {
+        "user": "many-to-one"
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "Id": 1,
+    "name": "Website Redesign",
+    "description": "Complete redesign of company website with modern UI/UX",
+    "status": "active",
+    "priority": "high",
+    "startDate": "2024-01-01",
+    "dueDate": "2024-03-15",
+    "progress": 65,
+    "ownerId": 1,
+    "teamId": 1,
+    "color": "#6366F1",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-10T15:30:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "Mobile App Development",
+    "description": "Native mobile application for iOS and Android platforms",
+    "status": "active",
+    "priority": "high",
+    "startDate": "2024-01-15",
+    "dueDate": "2024-05-01",
+    "progress": 30,
+    "ownerId": 1,
+    "teamId": 2,
+    "color": "#8B5CF6",
+    "createdAt": "2024-01-15T00:00:00Z",
+    "updatedAt": "2024-01-12T09:45:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "Brand Identity",
+    "description": "New brand identity and marketing materials",
+    "status": "planning",
+    "priority": "medium",
+    "startDate": "2024-02-01",
+    "dueDate": "2024-04-01",
+    "progress": 15,
+    "ownerId": 2,
+    "teamId": 1,
+    "color": "#EC4899",
+    "createdAt": "2024-01-05T00:00:00Z",
+    "updatedAt": "2024-01-11T14:20:00Z"
+  }
+]

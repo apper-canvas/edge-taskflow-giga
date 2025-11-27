@@ -43,7 +43,7 @@ export const taskService = {
   },
 
   // Create new task
-  async create(taskData) {
+async create(taskData) {
     await delay(300)
     const tasks = getTasks()
     
@@ -54,7 +54,9 @@ export const taskService = {
       ...taskData,
       completed: false,
       createdAt: new Date().toISOString(),
-      completedAt: null
+      completedAt: null,
+      userId: taskData.userId || 1, // Default to user 1 for now
+      projectId: taskData.projectId || null
     }
     
     const updatedTasks = [newTask, ...tasks]
