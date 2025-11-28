@@ -1,13 +1,14 @@
-import React, { useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { toast } from "react-toastify"
-import { motion } from "framer-motion"
-import { logout } from "@/store/slices/authSlice"
-import ApperIcon from "@/components/ApperIcon"
-import Button from "@/components/atoms/Button"
-import Input from "@/components/atoms/Input"
-import Select from "@/components/atoms/Select"
-import Checkbox from "@/components/atoms/Checkbox"
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { motion } from "framer-motion";
+import App from "@/App";
+import ApperIcon from "@/components/ApperIcon";
+import Select from "@/components/atoms/Select";
+import Checkbox from "@/components/atoms/Checkbox";
+import Button from "@/components/atoms/Button";
+import Input from "@/components/atoms/Input";
+import { logout } from "@/store/slices/authSlice";
 
 const Settings = () => {
   const { user } = useSelector(state => state.auth)
@@ -25,8 +26,7 @@ const Settings = () => {
       email: user?.preferences?.notifications?.email ?? true,
       push: user?.preferences?.notifications?.push ?? true,
       taskReminders: user?.preferences?.notifications?.taskReminders ?? true,
-      teamUpdates: user?.preferences?.notifications?.teamUpdates ?? true
-    },
+},
     timezone: user?.preferences?.timezone || "UTC"
   })
 
@@ -295,18 +295,7 @@ const Settings = () => {
                     <Checkbox
                       checked={preferences.notifications.taskReminders}
                       onChange={(checked) => handleNotificationChange("taskReminders", checked)}
-                    />
-                  </div>
-
-                  <div className="flex items-center justify-between py-4">
-                    <div>
-                      <h3 className="font-medium text-gray-900">Team Updates</h3>
-                      <p className="text-sm text-gray-500">Notifications about team activities and mentions</p>
-                    </div>
-                    <Checkbox
-                      checked={preferences.notifications.teamUpdates}
-                      onChange={(checked) => handleNotificationChange("teamUpdates", checked)}
-                    />
+/>
                   </div>
                 </div>
 

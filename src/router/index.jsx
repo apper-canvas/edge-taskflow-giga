@@ -1,8 +1,7 @@
-import { createBrowserRouter } from "react-router-dom"
-import { Suspense, lazy } from "react"
-import Layout from "@/components/organisms/Layout"
-import AuthLayout from "@/components/organisms/AuthLayout"
-
+import { createBrowserRouter } from "react-router-dom";
+import React, { Suspense, lazy } from "react";
+import AuthLayout from "@/components/organisms/AuthLayout";
+import Layout from "@/components/organisms/Layout";
 // Auth Pages
 const Login = lazy(() => import("@/components/pages/auth/Login"))
 const Signup = lazy(() => import("@/components/pages/auth/Signup"))
@@ -18,7 +17,6 @@ const Upcoming = lazy(() => import("@/components/pages/Upcoming"))
 const Completed = lazy(() => import("@/components/pages/Completed"))
 const Projects = lazy(() => import("@/components/pages/Projects"))
 const Calendar = lazy(() => import("@/components/pages/Calendar"))
-const Teams = lazy(() => import("@/components/pages/Teams"))
 const Settings = lazy(() => import("@/components/pages/Settings"))
 const NotFound = lazy(() => import("@/components/pages/NotFound"))
 
@@ -88,13 +86,9 @@ const mainRoutes = [
     path: "projects",
     element: <LoadingFallback><Projects /></LoadingFallback>
   },
-  {
+{
     path: "calendar",
     element: <LoadingFallback><Calendar /></LoadingFallback>
-  },
-  {
-    path: "teams",
-    element: <LoadingFallback><Teams /></LoadingFallback>
   },
   {
     path: "settings",

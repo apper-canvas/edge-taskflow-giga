@@ -32,7 +32,6 @@ const Layout = () => {
     { path: "/completed", icon: "CheckCheck", label: "Completed" },
     { path: "/projects", icon: "FolderOpen", label: "Projects" },
     { path: "/calendar", icon: "CalendarDays", label: "Calendar" },
-    { path: "/teams", icon: "Users", label: "Teams" },
     { path: "/settings", icon: "Settings", label: "Settings" }
   ]
 
